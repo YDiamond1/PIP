@@ -1,0 +1,51 @@
+.inputitems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #404040;
+    padding:40px;
+    border-radius: 10px;
+}
+form.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input[type="text"]{
+
+    font-size: 18px;
+    width: 146px;
+}
+input[type=checkbox]{
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+
+}
+input[type='submit']{
+    height: 27px;
+    border-radius: 8px;
+    width: auto;
+    transition: .5s;
+}
+
+div.input{
+
+    width: 100%;
+    margin: 10px 0;
+}
+td{
+    font-size: 18px;
+    text-align:center;
+    border: whitesmoke 3px;
+}
+.textinput{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+}
+

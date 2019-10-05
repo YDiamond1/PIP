@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="css/Styles.css" rel="stylesheet">
+    <link type="text/css" href="css/inputstyles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+    <script src="js/scripts.js"></script>
+    <title>Title</title>
+    <script>
+        let acсess=false;
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class = "intro">
+    Dmitri vyatkin P3202
+        </div>
+    </div>
+<div class="container">
+    <div class="tasks">
+        <form class = "input"  action="checkpoints.php" method="get" onsubmit="submitForm()">
+                <div class="inputitems">
+                    <div class = "X">
+                        <div class="label">X:</div>
+                    </div>
+                    <table>
+                        <tbody id="X-in">
+                            <tr>
+                                <td>-5</td><td><input id="1" type="checkbox"  name="x[-5]" value="-5"></td>
+                                <td>-2</td><td><input id="2" type="checkbox" name="x[-2]" value="-2"></td>
+                                <td> 1</td><td><input id="3" type="checkbox" name="x[1]" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>-4</td><td><input id="4" type="checkbox" name="x[-4]" value="-4"></td>
+                                <td>-1</td><td><input id="5" type="checkbox" name="x[-1]" value="-1"></td>
+                                <td>2</td><td><input id="6" type="checkbox" name="x[2]" value="2"></td>
+                            </tr>
+                            <tr>
+                                <td>-3</td><td><input id="7" type="checkbox" name="x[-3]" value="-3"></td>
+                                <td>0</td><td><input id="8" type="checkbox" name="x[0]" value="0"></td>
+                                <td>3</td><td><input id="9" type="checkbox" name="x[3]" value="3"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="textinput">
+
+
+                        <div class="label">
+                        <label for="yV" id="resultY">Y:</label>
+                        </div>
+                        <div class="input">
+                        <input type="text" maxlength="5" size="6" id="yV"  oninput="checkY(this.value)" placeholder=" от -3 до 5" >
+
+                        </div>
+
+
+                        <div class="label">
+                            <label for="rV" id="resultR">R:</label>
+                        </div>
+                        <div class="input">
+                        <input type="text" maxlength="5" size="6" id="rV" oninput="checkR(this.value)"  placeholder=" от 1 до 4">
+                        </div>
+                    </div>
+                    <input type="submit" id="sub"  placeholder="send">
+                </div>
+            </form>
+
+        <div class="img">
+            <img src="img/areas.png">
+
+        </div>
+    </div>
+    <div class = "result">
+        <iframe class = "output" name="graphics"> </iframe>
+    </div>
+</div>
+</body>
+</html>
