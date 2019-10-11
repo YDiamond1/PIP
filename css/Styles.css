@@ -7,14 +7,24 @@ html {
 div ul{
     margin-block-end: 0;
 }
+body{
+    margin:0;
+    padding:0;
+}
+body.begin{
+    margin:0;
+    padding:0;
+    background-image: url("https://media.giphy.com/media/ERITeC4vJCEne/source.gif");
+}
 
 .container{
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
     margin: auto;
     color:#a0a0a0;
     font-size: 13px;
+    height: 100%;
 }
 .header{
     margin: 0;
@@ -89,6 +99,9 @@ img{
     border-radius: 10px;
     vertical-align: middle;
 }
+img.wtf{
+    border-radius: 0;
+}
 
 
 div label{
@@ -101,8 +114,23 @@ div.result{
 }
 iframe{
     border: 0;
-    width:430px;
-    height:260px;
+    width:640px;
+    height:360px;
+}
+.container>table,
+.container>table tr,
+.container>table td{
+    border : 1px solid aqua;
+    background-color: #404040;
+    text-align: center;
+}
+a{
+    color: orangered;
+    text-decoration: none;
+}
+
+a:hover{
+    color: deeppink;
 }
 
 

@@ -37,21 +37,21 @@ function checkY(value){
     }
 
 }
-function checkYform(value){
+function checkYform(obj){
+    let value = obj.value;
     value = value.replace(',','.');
     if(!isNaN(Number(value))){
-        if(value >= -3 || value <= 5){
-            return true;
-        }
+        obj.value = value;
+        return (value >= -3 && value <= 5);
     }
     return false;
 }
-function checkRform(value){
-    value = value.replace(',','.');
+function checkRform(obj){
+    let value = obj.value;
+    value =value.replace(',','.');
     if(!isNaN(Number(value))){
-        if(value >= 1 || value <= 4){
-            return true;
-        }
+        obj.value =value;
+        return (value >= 1 && value <= 4);
     }
     return false;
 }
@@ -78,8 +78,10 @@ function checkX() {
     }
     return havevalue;
 }
-function submitForm(){
-
+function submitForm(event){
+    if(!(checkRform(rV) && checkYform(yV) && checkX())) {
+        event.preventDefault();
+    }
     return checkRform(rV.value) && checkYform(yV.value) && checkX();
 }
 

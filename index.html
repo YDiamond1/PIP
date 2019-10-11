@@ -7,39 +7,37 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
     <script src="js/scripts.js"></script>
     <title>Title</title>
-    <script>
-        let acсess=false;
-    </script>
 </head>
-<body>
+<body class="begin">
     <div class="header">
         <div class = "intro">
-    Dmitri vyatkin P3202
+            <span>Dmitri vyatkin P3202 V202006</span>
+            <a href="https://github.com/YDiamond1/PIP" target="_blank">Source</a>
         </div>
     </div>
 <div class="container">
     <div class="tasks">
-        <form class = "input"  action="checkpoints.php" method="get" onsubmit="submitForm()">
+        <form class = "input"  action="checkpoints.php" method="get" onsubmit="submitForm(event)" target="graphics">
                 <div class="inputitems">
                     <div class = "X">
                         <div class="label">X:</div>
                     </div>
-                    <table>
+                    <table class="X-table">
                         <tbody id="X-in">
                             <tr>
-                                <td>-5</td><td><input id="1" type="checkbox"  name="x[-5]" value="-5"></td>
-                                <td>-2</td><td><input id="2" type="checkbox" name="x[-2]" value="-2"></td>
-                                <td> 1</td><td><input id="3" type="checkbox" name="x[1]" value="1"></td>
+                                <td>-5</td><td><input id="1" type="checkbox"  name="X[]" value="-5"></td>
+                                <td>-2</td><td><input id="2" type="checkbox" name="X[]" value="-2"></td>
+                                <td> 1</td><td><input id="3" type="checkbox" name="X[]" value="1"></td>
                             </tr>
                             <tr>
-                                <td>-4</td><td><input id="4" type="checkbox" name="x[-4]" value="-4"></td>
-                                <td>-1</td><td><input id="5" type="checkbox" name="x[-1]" value="-1"></td>
-                                <td>2</td><td><input id="6" type="checkbox" name="x[2]" value="2"></td>
+                                <td>-4</td><td><input id="4" type="checkbox" name="X[]" value="-4"></td>
+                                <td>-1</td><td><input id="5" type="checkbox" name="X[]" value="-1"></td>
+                                <td>2</td><td><input id="6" type="checkbox" name="X[]" value="2"></td>
                             </tr>
                             <tr>
-                                <td>-3</td><td><input id="7" type="checkbox" name="x[-3]" value="-3"></td>
-                                <td>0</td><td><input id="8" type="checkbox" name="x[0]" value="0"></td>
-                                <td>3</td><td><input id="9" type="checkbox" name="x[3]" value="3"></td>
+                                <td>-3</td><td><input id="7" type="checkbox" name="X[]" value="-3"></td>
+                                <td>0</td><td><input id="8" type="checkbox" name="X[]" value="0"></td>
+                                <td>3</td><td><input id="9" type="checkbox" name="X[]" value="3"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -50,7 +48,7 @@
                         <label for="yV" id="resultY">Y:</label>
                         </div>
                         <div class="input">
-                        <input type="text" maxlength="5" size="6" id="yV"  oninput="checkY(this.value)" placeholder=" от -3 до 5" >
+                        <input type="text" maxlength="5" size="6" id="yV"  oninput="checkY(this.value)" name="Y" placeholder=" от -3 до 5" >
 
                         </div>
 
@@ -59,7 +57,7 @@
                             <label for="rV" id="resultR">R:</label>
                         </div>
                         <div class="input">
-                        <input type="text" maxlength="5" size="6" id="rV" oninput="checkR(this.value)"  placeholder=" от 1 до 4">
+                        <input type="text" maxlength="5" size="6" id="rV" oninput="checkR(this.value)" name="R"  placeholder=" от 1 до 4">
                         </div>
                     </div>
                     <input type="submit" id="sub"  placeholder="send">
