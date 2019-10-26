@@ -6,6 +6,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="laba2" />
+          <element id="library" level="project" name="apache-tomcat-8.5" />
         </element>
       </element>
     </root>

@@ -1,0 +1,24 @@
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+    margin: 0 auto;
+    border: white solid 2px;
+
+}
+
+table tr:first-child {
+    font-size: 20px;
+    min-height: 40px;
+}
+
+table th {
+    padding: 4px 4px;
+    word-wrap: break-word;
+    max-width: 50px;
+    border: white solid 2px;
+}
+table th:nth-child(-n+3) {
+    width: 10%;
+}

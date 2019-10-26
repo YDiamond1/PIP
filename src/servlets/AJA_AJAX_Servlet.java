@@ -7,7 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspApplicationContext;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AJA_AJAX_Servlet extends HttpServlet {
 
@@ -22,10 +24,10 @@ public class AJA_AJAX_Servlet extends HttpServlet {
         try {
             double x = Double.parseDouble(request.getParameter("X"));
             double y = Double.parseDouble(request.getParameter("Y"));
-            double r = Double.parseDouble(request.getParameter("R"));
+            int r = Integer.parseInt(request.getParameter("R"));
             boolean hit = Boolean.parseBoolean(request.getParameter("hit"));
             Point AJAXpoint = new Point(x,y,r);
-
+            ((ArrayList<Point>)request.getSession().getAttribute("Points")).add(AJAXpoint);
             response.getWriter().println("{" +
                     "hit : " +AJAXpoint.isHit() +"," +
                     "}");
