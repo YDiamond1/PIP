@@ -3,6 +3,8 @@ var validX = false;
 var validR = false;
 var zero = 200;
 var rConstLenght = 150;
+var XCurrent=0;
+var YCurrent=0;
 
 function xChoose(x) {
 
@@ -54,7 +56,7 @@ function rChoose(r) {
         field.value = r;
         document.getElementById("r" + r).classList.add('sel');
         var r_text = document.getElementById("r_span");
-                r_text.style.display="none";
+        r_text.style.display="none";
         validR=true;
     }
     hidddenSub();
@@ -72,8 +74,8 @@ function draw() {
 
             xCanvas = e.pageX - e.target.offsetLeft;
             yCanvas = e.pageY - e.target.offsetTop;
-            x = xCanvas;
-            y = yCanvas;
+            x = (XCurrent=xCanvas);
+            y = (YCurrent=yCanvas);
 
 
             if (x >= zero) {
@@ -89,7 +91,6 @@ function draw() {
             }
 
             if (validR){
-                console.log(x+" "+y);
                 check(x,y);
             }
             else{
@@ -102,14 +103,23 @@ function draw() {
     }
 }
 
+function checkNumericParameters(x,y,r){
+
+    var partOFcircle = ((x<=0 && y>=0) && (x*x + y*y<=r*r));
+    var triangle = (x>=0 && y>=0 && ((-2)*x >= y-r));
+
+    var rectangle = ((x<=0 && y<=0) && ( x>=(-1*r) && y>=(-1)*r/2));
+    return partOFcircle || triangle || rectangle;
+}
 function check(x,y) {
         var r = document.getElementById("R_field").value;
-        x = Math.round(x / rConstLenght * r);
-        y = y / rConstLenght * r;
 
-
+        x = Math.round(x / rConstLenght * r * 10000)/10000;
+        y = Math.round(y / rConstLenght * r *10000)/10000;
+        var hit = checkNumericParameters(x,y,r);
+        pointDraw(hit, XCurrent,YCurrent);
         if ((-5 < x) && (x < 3) && (-5 < y) && (y < 5)) {
-
+            x = Math.round(x);
             var fieldX = document.getElementById('X_field');
             var fieldY = document.getElementById('Y_field');
             if ( fieldX.value !== "" ) {
@@ -118,11 +128,13 @@ function check(x,y) {
             fieldX.value = x;
             fieldY.value = y;
 
+
             document.getElementById("x" + x).classList.add('sel');
 
             validY =true;
             validX = true;
         }
+
     hidddenSub();
 
 }
@@ -136,35 +148,44 @@ function hidddenSub(){
     }
 }
 
-function drawR(res, xN, yN ,rN) {
-    var xCanvas = 0;
-    var yCanvas = 0;
-    if (res!=='-1'){
-        if (xN<0){
-            xCanvas = 175 - Math.abs(xN)/rN*150;
-        } else {
-            xCanvas = 175 + xN/rN*150;
-        }
-        if (yN<0){
-            yCanvas = 175 + Math.abs(yN)/rN*150;
-        } else {
-            yCanvas = 175 - yN/rN*150;
-        }
-
-        pointDraw(res, xCanvas,yCanvas);
-    }
+function sendForm(event){
+    event.preventDefault();
+    fetch("./controller?X="+X_field.value+"&Y="+Y_field.value+"&R="+R_field.value)
+        .then(resp => resp.json())
+        .then(addResponse);
 }
 
+function addResponse(response) {
+    var caption = document.getElementsByClassName("caption");
+    var i=2;
+    $('.row>.column:first-child').text(function (index, value) {
+        console.log(value);
+        if(value!="N"){
+            this.innerHTML++;
+        }
+    });
+    var row = document.createElement("div").classList.add("row");
 
+    $('.caption').after("<div class='row'>"+
+        "<div class=\"column\">1</div>\n" +
+        "<div class=\"column\">"+response.x+"</div>\n" +
+        "<div class=\"column\">"+response.y+"</div>\n" +
+        "<div class=\"column\">"+response.r+"</div>\n" +
+        "<div class=\"column\">"+response.hit+"</div>"+
+        "</div>");
+
+}
 function pointDraw(r, xCanvas, yCanvas) {
     var canvas = document.getElementById('canvas');
     if (canvas.getContext) {
+
         var ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
 
-        if (r!==0){
-            ctx.fillStyle = "#470005";}
+        if (!r){
+            ctx.fillStyle = "#470005";
+        }
         else {
             ctx.fillStyle = "rgba(91,234,65,0.68)";
         }

@@ -18,7 +18,6 @@ public class ControllerServlet extends HttpServlet {
         String x = request.getParameter("X");
         String y = request.getParameter("Y");
         String r = request.getParameter("R");
-        String hit = request.getParameter("hit");
         if(request.getSession().getAttribute("Points")==null){
             request.getSession().setAttribute("Points", new ArrayList<Point>());
         }
@@ -28,11 +27,7 @@ public class ControllerServlet extends HttpServlet {
             request.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
         }
         else{
-            if (hit != null) {
-                request.getServletContext().getRequestDispatcher("/AJAX").forward(request,response);
-            } else {
-                request.getServletContext().getRequestDispatcher("/check").forward(request,response);
-            }
+            request.getServletContext().getRequestDispatcher("/check").forward(request,response);
         }
     }
 }

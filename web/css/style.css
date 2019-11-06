@@ -14,9 +14,8 @@ canvas{
 }
 
 .main{
+	margin: auto;
 	text-align: center;
-	width: 100%;
-
 }
 .form{
 	margin-top: 40px;
@@ -25,6 +24,7 @@ canvas{
 }
 
 .head{
+	display: block;
 	width: 100%;
 	color:white;
 	background-color: black;
@@ -38,15 +38,24 @@ canvas{
 	width: 20%;
 	display: inline-block;
 }
-
+.variant{
+	width: 20%;
+	display: inline-block;
+}
 .table{
 	display: table;
-	width: 100%;
-	height: 500pc;
+	min-width: 1200px;
+	height: 500px;
 }
-.table>.row{
+.table .row{
 	display: table-row;
 }
-.row>{
+.row>.column{
 	display: table-cell;
+	border: black 2px solid;
+	height: 10px;
+}
+.container{
+	min-width: 1200px;
+	justify-content: center;
 }

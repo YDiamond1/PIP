@@ -22,16 +22,7 @@
         <servlet-name>AreaCheck</servlet-name>
         <url-pattern>/check</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>AJAXreq</servlet-name>
-        <servlet-class>servlets.AJA_AJAX_Servlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AJAXreq</servlet-name>
-        <url-pattern>/ajax</url-pattern>
-    </servlet-mapping>
-    
+
     <welcome-file-list>
         <welcome-file>controller</welcome-file>
     </welcome-file-list>

@@ -34,9 +34,9 @@ public class Point {
         return hit;
     }
     private boolean checkArea(double x, double y, int r){
-        boolean partOFcircle = ((x<=0 && y>=0) && (x*x + y*y<=r*r))  ? true : false;
-        boolean triangle = ((x>=0 && y>=0) && ((-2*x) + r <=y)) ? true : false;
-        boolean rectangle = ((x<=0 && y<=0) && ( x>=(-1*r) && y>=(-1)*r)) ? true : false;
+        boolean partOFcircle = ((x<=0 && y>=0) && (x*x + y*y<=r*r));
+        boolean triangle = ((x>=0 && y>=0) && ((-2*x) >=y-r));
+        boolean rectangle = ((x<=0 && y<=0) && ( x>=(-1*r) && y >= ((-1)*r)/2));
         return partOFcircle || triangle || rectangle;
     }
 }
