@@ -36,7 +36,7 @@
             <form id="coorForm" action="javascript:void(null)" onsubmit="sendForm(event);">
                 <span id="r_span" style="display: none">Выберите радиус</span>
                 <div class="X_coor">
-                    <span class="caption">X:</span>
+                    <span class="caption_for">X:</span>
                     <button type="button" class="X_button" id="x-5" onclick="xChoose('-5')">-5</button>
                     <button type="button" class="X_button" id="x-4" onclick="xChoose('-4')">-4</button>
                     <button type="button" class="X_button" id="x-3" onclick="xChoose('-3')">-3</button>
@@ -49,12 +49,12 @@
                     <input type="hidden" name="X" id="X_field">
                 </div>
                 <div class="Y_coor">
-                    <span class="caption">Y:</span>
+                    <span class="caption_for">Y:</span>
                     <input type="text" name="Y" id="Y_field" oninput="yChoose()" placeholder="(-5..5)"
                            autocomplete="off">
                 </div>
                 <div class="R_coor">
-                    <span class="caption">R:</span>
+                    <span class="caption_for">R:</span>
                     <button type="button" class="R_button" id="r1" onclick="rChoose('1')">1</button>
                     <button type="button" class="R_button" id="r2" onclick="rChoose('2')">2</button>
                     <button type="button" class="R_button" id="r3" onclick="rChoose('3')">3</button>
@@ -89,7 +89,7 @@
                 <div class="column"><%=point.getX()%></div>
                 <div class="column"><%=point.getY()%></div>
                 <div class="column"><%=point.getR()%></div>
-                <div class="column"><%=point.isHit()? "Попал" : "НЕ Попал"%></div>
+                <div class="column"><%=point.isHit()? "HIT" : "MISS"%></div>
             </div>
             <%
                }

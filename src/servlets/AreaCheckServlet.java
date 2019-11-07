@@ -38,7 +38,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
             ((ArrayList<Point>) req.getSession().getAttribute("Points")).add(point);
             resp.addHeader("charset", "utf-8");
-           resp.getWriter().print(String.format(Locale.ROOT,template, point.getX(), point.getY(), point.getR(), point.isHit() ? "Попал" : "НЕ Попал"));
+           resp.getWriter().print(String.format(Locale.ROOT,template, point.getX(), point.getY(), point.getR(), point.isHit() ? "HIT" : "MISS"));
         }catch (Exception ex){
             req.getServletContext().getRequestDispatcher("/index.jsp").forward(req,resp);
         }
