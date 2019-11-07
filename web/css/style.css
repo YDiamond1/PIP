@@ -2,13 +2,20 @@
 
 	background-color: red !important;
 }
-
+body{
+	margin: 0;
+	padding: 0;
+}
 button.sel{
 
 	background-color: blue !important;
 }
+button{
+	margin: 10px 10px;
+}
 
 canvas{
+	border-radius: 5px;
 	background-image: url("/images/graph.png");
 	background-size: contain;
 }
@@ -18,6 +25,8 @@ canvas{
 	text-align: center;
 }
 .form{
+
+	padding: 25px;
 	margin-top: 40px;
 	text-align: center;
 	width: 100%;
@@ -43,9 +52,11 @@ canvas{
 	display: inline-block;
 }
 .table{
+	text-align: center;
+	margin: 50px;
 	display: table;
 	min-width: 1200px;
-	height: 500px;
+	height: auto;
 }
 .table .row{
 	display: table-row;
@@ -56,6 +67,8 @@ canvas{
 	height: 10px;
 }
 .container{
+
+	display:flex ;
 	min-width: 1200px;
 	justify-content: center;
 }
