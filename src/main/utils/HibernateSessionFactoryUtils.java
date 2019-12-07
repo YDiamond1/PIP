@@ -13,9 +13,8 @@ public class HibernateSessionFactoryUtils {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-                Configuration configuration = new Configuration().configure("./WEB-INF/classes/hibernate.cnf.xml");
+                Configuration configuration= new Configuration().configure().setProperty("hibernate.connection.password","psvita2013");
                 configuration.addAnnotatedClass(Point.class);
-
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

@@ -34,7 +34,7 @@ public class PointsDAO {
         HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
         String sessionID = session.getId();
 
-        Query query=HibernateSessionFactoryUtils.getSessionFactory().openSession().createQuery("select p from Point p WHERE p.session = :id");
+        Query query=HibernateSessionFactoryUtils.getSessionFactory().openSession().createQuery("select p from Point p WHERE p.sessionID = :id");
         query.setParameter("id",sessionID );
         points=query.list();
 

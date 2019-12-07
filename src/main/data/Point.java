@@ -5,16 +5,16 @@ import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import javax.servlet.http.HttpSession;
 @Entity
-@Table(name="points")
+@Table(name = "points")
 public class Point {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private double x;
     private double y;
     private double r;
     private boolean hit;
-    private String session;
+    private String sessionID;
 
     public boolean isHit() {
         return hit;
@@ -64,7 +64,7 @@ public class Point {
         this.y = y;
         this.r = r;
         this.hit=areaCheck();
-        this.session = getSessionID();
+        this.sessionID = getSessionID();
     }
     private boolean areaCheck(){
         boolean circle = (x<=0 && y>=0) && r>=Math.sqrt(x*x+y*y);
