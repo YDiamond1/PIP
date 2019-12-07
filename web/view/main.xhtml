@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>MAIN</title>
+        <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputScript library="js" name="main.js"/>
+        <h:outputStylesheet library="css" name="primeflex.css"/>
+    </h:head>
+    <h:body>
+        <div class="p-grid">
+            <div id="header" class="p-col-12">
+                vyatkin dmitri p3202
+                <h:form>
+                    <h:commandButton value="Перейти к стартовой странице" action="toIndex"/>
+                </h:form>
+            </div>
+            <div class="p-col" id="main">
+                <div class="p-grid">
+                    <div class="p-col">
+                        <h:form id="canvasInputs">
+                            <h:inputHidden id="xCanvas" required="true" value="#{checker.xCanvas}">
+
+                            </h:inputHidden>
+                            <h:inputHidden id="yCanvas" required="true" value="#{checker.yCanvas}">
+
+                            </h:inputHidden>
+                            <canvas id="graph" width="400px" height="400px" onclick="clickCanvas(event)" style="{border:10px;}"></canvas>
+                            <p:remoteCommand name="addPoint" action="#{checker.addPointC()}" update="table" />
+                        </h:form>
+                    </div>
+                    <div class="p-col">
+                        <h:form id="inputs">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel for="X_field" value="X:"/>
+                                <p:inputText id="X_field" value="#{checker.x}">
+                                    <f:validateDoubleRange minimum="-5.0" maximum="3.0"/>
+                                    <f:ajax execute="@parent" render="@form"/>
+                                </p:inputText>
+                            </p:panelGrid>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel for="Y_field" value="Y:"/>
+                                <p:selectOneMenu id="Y_field" value="#{checker.y}" style="width:125px" cellpadding="10">
+                                    <f:selectItem itemLabel="Select ONE" itemValue=""/>
+                                    <f:selectItem itemLabel="-2.0" itemValue="-2.0"/>
+                                    <f:selectItem itemLabel="-1.5" itemValue="-1.5"/>
+                                    <f:selectItem itemLabel="-1.0" itemValue="-1.0"/>
+                                    <f:selectItem itemLabel="-0.5" itemValue="-0.5"/>
+                                    <f:selectItem itemLabel="0" itemValue="0"/>
+                                    <f:selectItem itemLabel="0.5" itemValue="0.5"/>
+                                    <f:selectItem itemLabel="1" itemValue="1"/>
+                                    <f:selectItem itemLabel="1.5" itemValue="1.5"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel for="R_field" value="R:"/>
+                                <p:spinner id="R_field" value="#{checker.r}" required="true" max="3" min="1" stepFactor="0.5" onchange="createGraphic(this.value)"/>
+                            </p:panelGrid>
+                            <p:remoteCommand update=""/>
+                            <p:commandButton value="Submit" action="#{checker.addPoint}" update="inputs"/>
+                        </h:form>
+                    </div>
+                    <div class="p-col-12">
+                        <p:dataTable var="point" value="#{checker.points}" id="table">
+                            <p:column headerText="X">
+                                <h:outputText value="#{point.x}"/>
+                            </p:column>
+                            <p:column headerText="Y">
+                                <h:outputText value="#{point.y}"/>
+                            </p:column>
+                            <p:column headerText="R">
+                                <h:outputText value="#{point.r}"/>
+                            </p:column>
+                            <p:column headerText="HIT">
+                                <h:outputText value="#{point.hit}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</f:view>
+</html>

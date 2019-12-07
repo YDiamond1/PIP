@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <f:view>
+       <h:head>
+            <title>Welcome</title>
+            <h:outputScript library="js" name="index.js"/>
+            <link rel="stylesheet" href="resources/css/index.css"/>
+            <h:outputStylesheet library="css" name="primeflex.css"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+       </h:head>
+       <h:body>
+           <div class="container p-grid">
+               <div id="header p-col">
+               Vyatkin Dmitri P3202 20215
+                </div>
+               <div id="clock" class="p-col"></div>
+               <div class="content p-col">
+                   <div id="description">
+                       <h:form>
+                           <h:commandButton value="Перейти к главной странице" action="toMain"/>
+                       </h:form>
+                   </div>
+               </div>
+           </div>
+       </h:body>
+   </f:view>
+</html>

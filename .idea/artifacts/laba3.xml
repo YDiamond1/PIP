@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="laba3">
+    <output-path>$PROJECT_DIR$/out/artifacts/laba3</output-path>
+    <root id="archive" name="laba3.war">
+      <element id="javaee-facet-resources" facet="laba3/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:7.0" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.4.9.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.dom4j:dom4j:2.1.1" />
+          <element id="library" level="project" name="byte-buddy-1.9.11" />
+          <element id="library" level="project" name="Maven: javax.persistence:javax.persistence-api:2.2" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.14" />
+          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.5.1" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.6" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="jpa-descriptors" facet="laba3/jpa/JPA" />
+          <element id="module-output" name="laba3" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/resources/hibernate.cnf.xml" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
