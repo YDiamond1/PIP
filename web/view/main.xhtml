@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -39,14 +39,14 @@
                         <h:form id="inputs">
                             <p:panelGrid columns="2">
                                 <p:outputLabel for="X_field" value="X:"/>
-                                <p:inputText id="X_field" value="#{checker.x}">
+                                <p:inputText id="X_field" value="#{checker.x}" required="true">
                                     <f:validateDoubleRange minimum="-5.0" maximum="3.0"/>
                                     <f:ajax execute="@parent" render="@form"/>
                                 </p:inputText>
                             </p:panelGrid>
                             <p:panelGrid columns="2">
                                 <p:outputLabel for="Y_field" value="Y:"/>
-                                <p:selectOneMenu id="Y_field" value="#{checker.y}" style="width:125px" cellpadding="10">
+                                <p:selectOneMenu id="Y_field" value="#{checker.y}" required="true" style="width:125px" cellpadding="10">
                                     <f:selectItem itemLabel="Select ONE" itemValue=""/>
                                     <f:selectItem itemLabel="-2.0" itemValue="-2.0"/>
                                     <f:selectItem itemLabel="-1.5" itemValue="-1.5"/>
@@ -60,10 +60,12 @@
                             </p:panelGrid>
                             <p:panelGrid columns="2">
                                 <p:outputLabel for="R_field" value="R:"/>
-                                <p:spinner id="R_field" value="#{checker.r}" required="true" max="3" min="1" stepFactor="0.5" onchange="createGraphic(this.value)"/>
+                                <p:spinner id="R_field" value="#{checker.r}" required="true" max="3" min="1" stepFactor="0.5" onchange="createGraphic(this.value)">
+                                    <p:ajax id="R_field" update="@form"></p:ajax>
+                                </p:spinner>
                             </p:panelGrid>
                             <p:remoteCommand update=""/>
-                            <p:commandButton value="Submit" action="#{checker.addPoint}" update="inputs"/>
+                            <p:commandButton value="Submit" action="#{checker.addPoint}" update="inputs table" oncomplete="drawTablePoints()"/>
                         </h:form>
                     </div>
                     <div class="p-col-12">

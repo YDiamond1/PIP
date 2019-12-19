@@ -1,21 +1,19 @@
 package data;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 import utils.HibernateSessionFactoryUtils;
-
-
+import javax.persistence.*;
 import javax.faces.context.FacesContext;
-
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import org.hibernate.query.Query;
+
 public class PointsDAO {
     public PointsDAO() {
     }
-
+    private Query query;
     private List<Point> points;
     public List<Point> getPoints() {
+        updatePoints();
         return points;
     }
 
@@ -23,20 +21,20 @@ public class PointsDAO {
         this.points = points;
     }
     public void addPoint(Point point){
-        Session session=HibernateSessionFactoryUtils.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(point);
-        transaction.commit();
-        session.close();
+        EntityManager em=HibernateSessionFactoryUtils.getEm();
+        em.getTransaction().begin();
+        em.persist(point);
+        em.getTransaction().commit();
+
     }
     private void updatePoints(){
         FacesContext fCtx = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
         String sessionID = session.getId();
 
-        Query query=HibernateSessionFactoryUtils.getSessionFactory().openSession().createQuery("select p from Point p WHERE p.sessionID = :id");
+        Query query=HibernateSessionFactoryUtils.getEm().createQuery("select p from Point p WHERE p.sessionID = :id");
         query.setParameter("id",sessionID );
-        points=query.list();
+        points=query.getResultList();
 
     }
 }

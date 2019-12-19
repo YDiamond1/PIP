@@ -1,6 +1,7 @@
 window.onload = function () {
     createGraphic(1);
 }
+var count =0;
 function createGraphic(r) {
     let canvas = document.getElementById("graph"), context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -50,6 +51,7 @@ function createGraphic(r) {
     context.stroke();
 
     context.closePath();
+    drawTablePoints();
 }
 function clickCanvas(event) {
     let r = document.getElementById("inputs:R_field_input").value;
@@ -59,8 +61,8 @@ function clickCanvas(event) {
     let xPX= event.x-cornerX-200;
     let yPX = (event.y-cornerY-200);
 
-    let x = xPX/(57*r);
-    let y = -1*yPX/(57*r);
+    let x = xPX/57;
+    let y = -1*yPX/57;
     console.log(x+" " + y);
     document.getElementById('canvasInputs:xCanvas').value=x;
     document.getElementById('canvasInputs:yCanvas').value=y;
@@ -79,6 +81,36 @@ function drawPoint(x,y,hit){
     context.beginPath();
     context.arc(x,y,5,0,2*Math.PI);
     context.fillStyle = hit ? 'green' : 'red';
+    context.fill();
+    context.closePath();
+}
+function drawTablePoints(){
+    let cur_r = document.getElementById("inputs:R_field_input").value;
+    let table = document.getElementById("table_data");
+    let points = table.children;
+   if(table.className.search("ui-datatable-empty-message")<0){
+        for (let i = 0; i < points.length; i++) {
+            console.dir(points[i]);
+            let x = points[i].children[0].innerText;
+            let y = points[i].children[1].innerText;
+            let r = points[i].children[2].innerText;
+            let hit = points[i].children[3].innerText;
+            if (r != cur_r) {
+                drawPointFromTable(x, y, 'yellow');
+            } else {
+                drawPointFromTable(x, y, hit ? 'green' : 'red');
+            }
+        }
+    }
+}
+function drawPointFromTable(x,y,colour) {
+    let xPx = x*57+200;
+    let yPx = -1*y*57+200;
+    console.log(xPx+" "+yPx);
+    let context = document.getElementById('graph').getContext('2d');
+    context.beginPath();
+    context.arc(xPx,yPx,5,0,2*Math.PI);
+    context.fillStyle = colour;
     context.fill();
     context.closePath();
 }

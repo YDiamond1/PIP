@@ -1,16 +1,26 @@
 package utils;
-import data.Point;
+
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+
+
+
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 
 public class HibernateSessionFactoryUtils {
     private static SessionFactory sessionFactory;
 
-    private HibernateSessionFactoryUtils() {}
+    private static EntityManager em;
+    static {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernate-unit");
+        em = factory.createEntityManager();
+    }
 
-
-    public static SessionFactory getSessionFactory() {
+/*
+    static {
         if (sessionFactory == null) {
             try {
                 Configuration configuration= new Configuration().configure().setProperty("hibernate.connection.password","psvita2013");
@@ -22,6 +32,14 @@ public class HibernateSessionFactoryUtils {
                 System.out.println(e.getMessage());
             }
         }
+    }
+    */
+
+    public static SessionFactory getSessionFactory() {
+
         return sessionFactory;
+    }
+    public static EntityManager getEm(){
+        return em;
     }
 }
